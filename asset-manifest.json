@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/business-card-maker/static/css/main.b7b35a29.chunk.css",
+    "main.js": "/business-card-maker/static/js/main.e9b225b0.chunk.js",
+    "main.js.map": "/business-card-maker/static/js/main.e9b225b0.chunk.js.map",
+    "runtime-main.js": "/business-card-maker/static/js/runtime-main.94b30e0e.js",
+    "runtime-main.js.map": "/business-card-maker/static/js/runtime-main.94b30e0e.js.map",
+    "static/js/2.adaea916.chunk.js": "/business-card-maker/static/js/2.adaea916.chunk.js",
+    "static/js/2.adaea916.chunk.js.map": "/business-card-maker/static/js/2.adaea916.chunk.js.map",
+    "index.html": "/business-card-maker/index.html",
+    "static/css/main.b7b35a29.chunk.css.map": "/business-card-maker/static/css/main.b7b35a29.chunk.css.map",
+    "static/js/2.adaea916.chunk.js.LICENSE.txt": "/business-card-maker/static/js/2.adaea916.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.94b30e0e.js",
+    "static/js/2.adaea916.chunk.js",
+    "static/css/main.b7b35a29.chunk.css",
+    "static/js/main.e9b225b0.chunk.js"
+  ]
+}
