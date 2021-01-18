@@ -7,6 +7,16 @@ class AuthService{ //로그인 로그아웃 관련된 역할만 수행
 
         return firebaseApp.auth().signInWithPopup(authProvider);
     }
+
+    logout(){
+        firebase.auth().signOut();
+    }
+
+    onAuthChange(onUserChanged){
+        firebase.auth().onAuthStateChanged(user=>{
+            onUserChanged(user);
+        })
+    }
 }
 
 export default AuthService;
