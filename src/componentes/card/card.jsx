@@ -24,7 +24,7 @@ function getStyles(theme){ //컴포넌트에 속하지 않아도 되는 함수
     switch(theme){
         case 'dark':
             return styles.dark;
-        case 'Light':
+        case 'light':
             return styles.light;
         case 'colorful':
             return styles.colorful;
