@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import styles from './card.module.css';
 
 const DEFAULT_IMAGE=process.env.PUBLIC_URL+'/images/default_logo.png';
-const Card = ({card}) => {
+const Card = memo(({card}) => {
     const {name, company, title, email, message, theme, fileURL}=card;
     const url = fileURL||DEFAULT_IMAGE; //fileurl이 없다면 디폴트이미지를 쓰겠다
     
@@ -18,7 +18,7 @@ const Card = ({card}) => {
             </div>
         </li>
     );
-};
+});
 
 function getStyles(theme){ //컴포넌트에 속하지 않아도 되는 함수
     switch(theme){
