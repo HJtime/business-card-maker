@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './card.module.css';
 
-const DEFAULT_IMAGE='/images/default_logo.png';
+const DEFAULT_IMAGE=process.env.PUBLIC_URL+'/images/default_logo.png';
 const Card = ({card}) => {
     const {name, company, title, email, message, theme, fileName, fileURL}=card;
     const url = fileURL||DEFAULT_IMAGE; //fileurl이 없다면 디폴트이미지를 쓰겠다
