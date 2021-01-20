@@ -5,6 +5,7 @@
     border-right: makerLightGrey 1px solid;
     text-align: center;
     padding: 0.5em 2em;
+    overflow-y: auto;
 }
 
 .title{

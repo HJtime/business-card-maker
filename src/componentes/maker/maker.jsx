@@ -6,39 +6,10 @@ import Header from '../header/header';
 import Preview from '../preview/preview';
 import styles from './maker.module.css';
 
-const Maker = ({FileInput, authService}) => {
-    const [cards, setCards]=useState({ //오브젝트로 바꿔줌..?!
-        '1':{
-            id: '1',
-            name: 'Ellie',
-            company: 'Samsung',
-            theme: 'dark',
-            email: 'ellie@gmail.com',
-            message: 'go for it',
-            fileName: 'ellie',
-            fileURL: null
-        },
-        '2':{
-            id: '2',
-            name: 'Ellie',
-            company: 'Samsung',
-            theme: 'light',
-            email: 'ellie@gmail.com',
-            message: 'go for it',
-            fileName: 'ellie',
-            fileURL: 'ellie.png'
-        },
-        '3':{
-            id: '3',
-            name: 'Ellie',
-            company: 'Samsung',
-            theme: 'colorful',
-            email: 'ellie@gmail.com',
-            message: 'go for it',
-            fileName: 'ellie',
-            fileURL: null
-        }
-    });
+const Maker = ({FileInput, authService, cardRepository}) => {
+    const historyState=useHistory().state;
+    const [cards, setCards]=useState({});
+    const [userId, setUserId]=useState(historyState&&historyState.id);
 
     const history=useHistory();
     const onLogout=()=>{
@@ -46,8 +17,21 @@ const Maker = ({FileInput, authService}) => {
     }
 
     useEffect(()=>{
-        authService.onAuthChange(user=>{ //유저가 업데이트 된다면
-            if(!user){ //사용자가 없다면
+        if(!userId){
+            return;
+        }
+        const stopSync=cardRepository.syncCards(userId, cards=>{
+            setCards(cards);
+        })
+        return ()=>{stopSync();}
+    }, [userId]);
+
+    useEffect(()=>{
+        authService.onAuthChange(user=>{
+            if(user){
+                setUserId(user.uid);
+            }
+            else{
                 history.push('/');
             }
         })
@@ -59,6 +43,7 @@ const Maker = ({FileInput, authService}) => {
             updated[card.id]=card; //cards의 id번째를 받아온 card로 업데이트해줌
             return updated;
         });
+        cardRepository.saveCard(userId, card);
     }
 
     const deleteCard=(card)=>{
@@ -67,6 +52,7 @@ const Maker = ({FileInput, authService}) => {
             delete updated[card.id];
             return updated;
         });
+        cardRepository.removeCard(userId, card);
     }
 
     return(
